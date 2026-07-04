@@ -1,3 +1,5 @@
+package LeetCode_Problems;
+
 // 26. Remove Duplicates from Sorted Array
 
 public class LC03_RemoveDuplicates {

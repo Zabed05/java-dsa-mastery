@@ -1,3 +1,5 @@
+package LeetCode_Problems;
+
 // 27 Remove Element
 
 public class LC04_RemoveElement {

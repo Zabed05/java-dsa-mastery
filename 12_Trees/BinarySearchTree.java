@@ -9,7 +9,7 @@ public class BinarySearchTree {
         private Node right;
         private int height;
 
-        public Node(int value){ // condtructor
+        public Node(int value){ // constructor
             this.value = value;
         }
 

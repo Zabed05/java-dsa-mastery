@@ -12,7 +12,7 @@ public class Q11_RotationCount {
         return pivot + 1;
     }
 
-    // findint the pivot index
+    // finding the pivot index
     public static int findPivot(int[] arr){
         int start = 0;
         int end = arr.length - 1;

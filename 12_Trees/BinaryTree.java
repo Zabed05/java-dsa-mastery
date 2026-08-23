@@ -113,7 +113,7 @@ public class BinaryTree {
         inOrder(node.right);
     }
 
-    // POST-ORDER (left -> root -> right)
+    // POST-ORDER (left -> right -> root)
     public void postOrder(){
         postOrder(root);
     }

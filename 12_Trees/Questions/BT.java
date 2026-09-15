@@ -340,4 +340,53 @@ public class BT {
 
         return Math.max(leftHeight, rightHeight) + 1;
     }
+
+    // Invert Binary Tree ( LC: 226)
+    public TreeNode invertTree(TreeNode root) {
+        if(root == null){
+            return root;
+        }
+
+        TreeNode left = invertTree(root.left);
+        TreeNode right = invertTree(root.right);
+
+        root.left = right;
+        root.right = left;
+
+        return root;
+    }
+
+    // Convert Sorted Array to Binary Search Tree (LC: 108)
+    public TreeNode sortedArrayToBST(int[] nums) {
+        return populateSorted(nums, 0, nums.length-1);
+    }
+    private TreeNode populateSorted(int[] arr, int start,  int end){
+        if(start > end){
+            return null;
+        }
+        int mid = start + (end - start)/2;
+
+        TreeNode root = new TreeNode(arr[mid]);
+        root.left = populateSorted(arr, start, mid-1); // for LHS
+        root.right = populateSorted(arr, mid+1, end); // for RHS
+
+        return root;
+    }
+
+    // Flatten Binary Tree to Linked List (LC: 114) (ask in Facebook)
+    public void flatten(TreeNode root) {
+        TreeNode current = root;
+        while(current != null){
+            if(current.left != null){
+                TreeNode temp = current.left;
+                while(temp.right != null){
+                    temp = temp.right;
+                }
+                temp.right = current.right;
+                current.right = current.left;
+                current.left = null;
+            }
+            current = current.right;
+        }
+    }
 }

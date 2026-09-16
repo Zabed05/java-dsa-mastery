@@ -389,4 +389,48 @@ public class BT {
             current = current.right;
         }
     }
+
+    // Valid Binary Search Tree (LC: 98) (ask in amazon, google)
+    public boolean isValidBST(TreeNode root) {
+        return helper(root, null, null);
+    }
+    private boolean helper(TreeNode node, Integer low, Integer high){
+        if(node == null){
+            return true;
+        }
+
+        if(low != null && node.val <= low){
+            return false;
+        }
+        if(high != null && node.val >= high){
+            return false;
+        }
+        
+        boolean left = helper(node.left, low, node.val);
+        boolean right = helper(node.right, node.val, high);
+
+        return left && right;
+    }
+
+    // Lowest Common Ancestor of a Binary Tree (LC: 236)
+    public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+        if(root == null){
+            return null;
+        }
+
+        if(root == p || root == q){ // if one of them is matching with root then no need to go down, root is my answer
+            return root;
+        }
+        
+        TreeNode left = lowestCommonAncestor(root.left, p, q);
+        TreeNode right = lowestCommonAncestor(root.right, p, q);
+
+        if(left != null && right != null){
+            return root;
+        }
+
+        // if left == null then right is the ans otherwise left ans
+        return left == null ? right : left;
+    }
+    
 }
